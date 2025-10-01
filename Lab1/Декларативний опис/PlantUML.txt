@@ -1,0 +1,67 @@
+@startuml
+!theme plain
+
+entity "Customer" as customer {
+  *customer_id : int <<PK>>
+  --
+  name : string
+  email : string
+  phone : string
+}
+
+entity "Order" as order {
+  *order_id : int <<PK>>
+  --
+  order_date : date
+  total_amount : float
+  --
+  customer_id : int <<FK>>
+}
+
+entity "OrderItem" as orderitem {
+  *order_item_id : int <<PK>>
+  --
+  quantity : int
+  price : float
+  --
+  order_id : int <<FK>>
+  product_id : int <<FK>>
+}
+
+entity "Product" as product {
+  *product_id : int <<PK>>
+  --
+  name : string
+  description : string
+  price : float
+  stock_quantity : int
+  --
+  category_id : int <<FK>>
+}
+
+entity "Category" as category {
+  *category_id : int <<PK>>
+  --
+  name : string
+}
+
+entity "Payment" as payment {
+  *payment_id : int <<PK>>
+  --
+  payment_date : date
+  amount : float
+  method : string
+  --
+  order_id : int <<FK>>
+}
+
+' ==============
+' Relationships
+' ==============
+
+customer ||--o{ order : places
+order ||--o{ orderitem : includes
+product ||--|{ orderitem : part_of
+category ||--o{ product : contains
+order ||--|| payment : paid_by
+@enduml
