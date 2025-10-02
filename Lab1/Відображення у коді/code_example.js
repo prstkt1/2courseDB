@@ -8,6 +8,14 @@ class Customer {
     this.addresses = [];
     this.orders = [];
   }
+
+  addAddress(address) {
+    this.addresses.push(address);
+  }
+
+  addOrder(order) {
+    this.orders.push(order);
+  }
 }
 
 class Address {
@@ -30,6 +38,14 @@ class Order {
     this.items = [];
     this.payment = null;
   }
+
+  addItem(item) {
+    this.items.push(item);
+  }
+
+  setPayment(payment) {
+    this.payment = payment;
+  }
 }
 
 class OrderItem {
@@ -39,6 +55,10 @@ class OrderItem {
     this.product_id = product_id;
     this.quantity = quantity;
     this.unit_price = unit_price;
+  }
+
+  getTotal() {
+    return this.quantity * this.unit_price;
   }
 }
 
