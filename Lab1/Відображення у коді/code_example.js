@@ -88,3 +88,74 @@ class Payment {
     this.status = status;
   }
 }
+
+const electronics = new Category(1, "Electronics");
+const phone = new Product(
+  1,
+  electronics.category_id,
+  "Smartphone",
+  "Latest model",
+  1000
+);
+const laptop = new Product(
+  2,
+  electronics.category_id,
+  "Laptop",
+  "Lightweight",
+  1500
+);
+
+const customer = new Customer(
+  1,
+  "Test User",
+  "testuser@example.com",
+  "+380123456789"
+);
+
+const address = new Address(
+  1,
+  customer.customer_id,
+  "Testaddress",
+  "Kyiv",
+  "11001"
+);
+customer.addAddress(address);
+
+const order = new Order(1, customer.customer_id, new Date(), 0);
+customer.addOrder(order);
+
+const item1 = new OrderItem(
+  1,
+  order.order_id,
+  phone.product_id,
+  2,
+  phone.price
+);
+const item2 = new OrderItem(
+  2,
+  order.order_id,
+  laptop.product_id,
+  1,
+  laptop.price
+);
+
+order.addItem(item1);
+order.addItem(item2);
+
+order.total_amount = order.items.reduce(
+  (sum, item) => sum + item.getTotal(),
+  0
+);
+
+const payment = new Payment(
+  1,
+  order.order_id,
+  order.total_amount,
+  "card",
+  "completed"
+);
+order.setPayment(payment);
+
+console.log("Customer:", customer.name);
+console.log("Order №", order.order_id, "for the amount", order.total_amount);
+console.log("Payment:", order.payment.method, "-", order.payment.status);
