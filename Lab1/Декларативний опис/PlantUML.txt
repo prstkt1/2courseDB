@@ -60,8 +60,8 @@ entity "Payment" as payment {
 ' ==============
 
 customer ||--o{ order : places
-order ||--o{ orderitem : includes
-product ||--|{ orderitem : part_of
+order ||--|{ orderitem : includes
+product ||--o{ orderitem : part_of
 category ||--o{ product : contains
 order ||--|| payment : paid_by
 @enduml
