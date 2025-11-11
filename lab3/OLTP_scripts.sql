@@ -98,7 +98,7 @@ WHERE oi.order_id = 1;
 -- DELETE
 
 DELETE FROM OrderItem
-WHERE order_id = 1 AND product_id = 3;
+WHERE order_id = 3 AND product_id = 4;
 
 DELETE FROM "Order"
 WHERE order_id = 2;
