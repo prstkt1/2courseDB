@@ -33,7 +33,7 @@ CREATE TABLE "Order" (
     CONSTRAINT fk_customer
         FOREIGN KEY(customer_id) 
         REFERENCES Customer(customer_id)
-        ON DELETE CASCADE -- Якщо клієнт видаляється, його замовлення також видаляються
+        ON DELETE CASCADE
 );
 
 
