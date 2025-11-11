@@ -6,10 +6,10 @@ INSERT INTO Category (name) VALUES
 
 
 INSERT INTO Customer (name, email, phone) VALUES
-('Іван Петренко', 'ivan.p@gmail.com', '+380501234567'),
-('Марія Іваненко', 'maria.i@gmail.com', '+380679876543'),
-('Олексій Сидоренко', 'oleksiy.s@gmail.com', '+380931112233'),
-('Олена Ковальчук', 'olena.k@gmail.com', '+380934445566');
+('1user', 'user.1@gmail.com', '+380501234567'),
+('2user', 'user.2@gmail.com', '+380679876543'),
+('3user', 'user.3gmail.com', '+380931112233'),
+('4user', 'user.4@gmail.com', '+380934445566');
 
 
 INSERT INTO Product (name, description, price, stock_quantity, category_id) VALUES
